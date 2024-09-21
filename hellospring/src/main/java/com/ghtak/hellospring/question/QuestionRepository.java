@@ -1,4 +1,4 @@
-package com.ghtak.hellospring;
+package com.ghtak.hellospring.question;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

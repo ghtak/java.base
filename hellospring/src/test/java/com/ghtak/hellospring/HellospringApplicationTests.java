@@ -1,12 +1,15 @@
 package com.ghtak.hellospring;
 
+import com.ghtak.hellospring.answer.Answer;
+import com.ghtak.hellospring.answer.AnswerRepository;
+import com.ghtak.hellospring.question.Question;
+import com.ghtak.hellospring.question.QuestionRepository;
 import jakarta.persistence.EntityManager;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;

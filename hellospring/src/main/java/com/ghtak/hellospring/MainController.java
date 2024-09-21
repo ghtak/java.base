@@ -5,13 +5,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class HelloController {
+public class MainController {
 
     @GetMapping("/hello")
     @ResponseBody
-    public String Hello() {
-        HelloLombok lombok = new HelloLombok();
-        lombok.setName("testName");
-        return "hello spring dev tools " + lombok.getName();
+    public String index(){
+        return "Hello";
+    }
+
+    @GetMapping("/")
+    public String root(){
+        return "redirect:/question/list";
     }
 }

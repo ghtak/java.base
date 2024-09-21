@@ -1,5 +1,6 @@
-package com.ghtak.hellospring;
+package com.ghtak.hellospring.answer;
 
+import com.ghtak.hellospring.question.Question;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
