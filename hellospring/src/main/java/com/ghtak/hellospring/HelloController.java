@@ -10,6 +10,8 @@ public class HelloController {
     @GetMapping("/hello")
     @ResponseBody
     public String Hello() {
-        return "hello spring dev tools";
+        HelloLombok lombok = new HelloLombok();
+        lombok.setName("testName");
+        return "hello spring dev tools " + lombok.getName();
     }
 }
