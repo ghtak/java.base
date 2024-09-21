@@ -10,6 +10,6 @@ public class HelloController {
     @GetMapping("/hello")
     @ResponseBody
     public String Hello() {
-        return "hello spring";
+        return "hello spring dev tools";
     }
 }
