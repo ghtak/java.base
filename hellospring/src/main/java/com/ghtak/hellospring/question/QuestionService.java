@@ -1,6 +1,7 @@
 package com.ghtak.hellospring.question;
 
 import com.ghtak.hellospring.answer.Answer;
+import com.ghtak.hellospring.common.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +28,14 @@ public class QuestionService {
             this.addQuestion("Sjb2", "Ctnt2");
         }
         return this.questionRepository.findAll();
+    }
+
+    public Question findById(Long id) {
+        var q = this.questionRepository.findById(id);
+        if (q.isPresent()) {
+            return q.get();
+        } else {
+            throw new DataNotFoundException("question not found");
+        }
     }
 }
