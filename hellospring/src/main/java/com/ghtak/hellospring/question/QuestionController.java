@@ -1,9 +1,12 @@
 package com.ghtak.hellospring.question;
 
+import com.ghtak.hellospring.answer.AnswerForm;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,22 +26,26 @@ public class QuestionController {
     }
 
     @GetMapping("/detail/{id}")
-    public String detail(Model model, @PathVariable("id") Long id){
+    public String detail(Model model, @PathVariable("id") Long id, AnswerForm answerForm){
         Question q = this.questionService.findById(id);
         model.addAttribute("question", q);
         return "question_detail";
     }
 
     @GetMapping("/create")
-    public String questionCreate(){
+    public String questionCreate(QuestionForm questionForm){
         return "question_form";
     }
 
     @PostMapping("/create")
-    public String questionCreate(@RequestParam(value = "subject") String subject,
-                                 @RequestParam(value = "content") String content)
+//    public String questionCreate(@RequestParam(value = "subject") String subject,
+//                                 @RequestParam(value = "content") String content)
+    public String questionCreate(@Valid QuestionForm questionForm, BindingResult bindingResult)
     {
-        this.questionService.create(subject, content);
+        if (bindingResult.hasErrors()) {
+            return "question_form";
+        }
+        this.questionService.create(questionForm.getSubject(), questionForm.getContent());
         return "redirect:/question/list";
     }
 }
